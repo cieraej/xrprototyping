@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b2e83af947064878ab5247d4f0d386b, type: 3}
+  m_Name: Audio Event - Doors
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 485ac48a563e2bf44bb4de7ead5a1f68, type: 3}
+  - {fileID: 8300000, guid: d3994560fb567c34a821fd9355c10eef, type: 3}
+  - {fileID: 8300000, guid: 7000b4d67a1320940b363f3cf891dfff, type: 3}
+  - {fileID: 8300000, guid: 8198ccc08475a764daaf226b841a55f1, type: 3}
+  volume:
+    minValue: 0.7391304
+    maxValue: 1
+  pitch:
+    minValue: 1.928352
+    maxValue: 2

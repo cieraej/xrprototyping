@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28547143c44894a7dab60a8f2b1e5076, type: 3}
+  m_Name: FeedbackCalibrator-RedToRed
+  m_EditorClassIdentifier: 
+  _interactableA: {fileID: 11400000, guid: 36bf549ad37d65b4294a7c57cb643495, type: 2}
+  _interactabbleB: {fileID: 11400000, guid: 36bf549ad37d65b4294a7c57cb643495, type: 2}
+  oneShotPrefabs: {fileID: 11400000, guid: 405abb80cc0c55b44923965681684a43, type: 2}
+  _audio: {fileID: 11400000, guid: 13bb52fdbc27141ceae53eb8732202ce, type: 2}
+  canPlay: 1
