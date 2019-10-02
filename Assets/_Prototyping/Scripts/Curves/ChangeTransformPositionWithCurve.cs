@@ -1,54 +1,83 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine;
+using Curves;
 
-using UnityEngine;
-
-namespace Curves
+#if UNITY_EDITOR
+using UnityEditor;
+[CustomEditor(typeof(ChangeTransformPositionWithCurve))]
+public class ChangeTransformPositionWithCurveEditor : Editor
 {
-    public class ChangeTransformPositionWithCurve : MonoBehaviour
+
+    /// <summary>
+    /// Buttons to be pressed on the inspector GUI 
+    /// </summary> ]
+    public override void OnInspectorGUI()
     {
-        /// <summary>
-        /// Transform to move.
-        /// </summary>
-        [SerializeField] private Transform _toMove;
-        /// <summary>
-        /// Transform to move to.
-        /// </summary>
-        [SerializeField] private Transform _moveTo;
-        /// <summary>
-        /// Animation curve it will follow.
-        /// </summary>
-        [SerializeField] private Curve _curve;
-        /// <summary>
-        /// Duration of the change.
-        /// </summary>
-        [SerializeField] private float _duration = 1f;
+        DrawDefaultInspector();
 
-        /// <summary>
-        /// Matches position.
-        /// </summary>
-        [ContextMenu("Animate Position")]
-        public void MatchPosition()
+        ChangeTransformPositionWithCurve myScript = (ChangeTransformPositionWithCurve)target;
+
+        if (GUILayout.Button("Animate Position"))
         {
-            StartCoroutine(CalculateCurve.AnimatePosition(_curve, _toMove, _toMove.position, _moveTo.position, _duration, true));
+            myScript.AnimatePosition();
         }
 
-        /// <summary>
-        /// Matches Rotation.
-        /// </summary>
-        [ContextMenu("Animate Rotation")]
-        public void MatchRotation()
+        if (GUILayout.Button("Animate Rotation"))
         {
-            StartCoroutine(CalculateCurve.AnimateRotation(_curve, _toMove, _toMove.rotation, _moveTo.rotation, _duration, true));
+            myScript.AnimateRotation();
         }
 
-        /// <summary>
-        /// Matches Scale.
-        /// </summary>
-        [ContextMenu("Animate Scale")]
-        public void MatchScale()
+        if (GUILayout.Button("Animate Scale"))
         {
-            StartCoroutine(CalculateCurve.AnimateScale(_curve, _toMove, _toMove.localScale, _moveTo.localScale, _duration, true));
+            myScript.AnimateScale();
         }
     }
 }
+#endif
+
+public class ChangeTransformPositionWithCurve : MonoBehaviour
+{
+    /// <summary>
+    /// Transform to move.
+    /// </summary>
+    [SerializeField] private Transform _toMove;
+    /// <summary>
+    /// Transform to move to.
+    /// </summary>
+    [SerializeField] private Transform _moveTo;
+    /// <summary>
+    /// Animation curve it will follow.
+    /// </summary>
+    [SerializeField] private Curve _curve;
+    /// <summary>
+    /// Duration of the change.
+    /// </summary>
+    [SerializeField] private float _duration = 1f;
+
+    /// <summary>
+    /// Matches position.
+    /// </summary>
+    [ContextMenu("Animate Position")]
+    public void AnimatePosition()
+    {
+        StartCoroutine(CalculateCurve.AnimatePosition(_curve, _toMove, _toMove.position, _moveTo.position, _duration, true));
+    }
+
+    /// <summary>
+    /// Matches Rotation.
+    /// </summary>
+    [ContextMenu("Animate Rotation")]
+    public void AnimateRotation()
+    {
+        StartCoroutine(CalculateCurve.AnimateRotation(_curve, _toMove, _toMove.rotation, _moveTo.rotation, _duration, true));
+    }
+
+    /// <summary>
+    /// Matches Scale.
+    /// </summary>
+    [ContextMenu("Animate Scale")]
+    public void AnimateScale()
+    {
+        StartCoroutine(CalculateCurve.AnimateScale(_curve, _toMove, _toMove.localScale, _moveTo.localScale, _duration, true));
+    }
+}
+

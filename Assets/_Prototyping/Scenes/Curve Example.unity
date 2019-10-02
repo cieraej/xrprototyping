@@ -888,35 +888,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materialToChange: {fileID: 2100000, guid: f41a1510c3551894f9e24c9887baa057, type: 2}
   _propertyToChange: _Color
-  _colorGradient:
-    serializedVersion: 2
-    key0: {r: 1, g: 0, b: 0, a: 1}
-    key1: {r: 1, g: 0.8689655, b: 0.75, a: 1}
-    key2: {r: 1, g: 0.65346545, b: 0, a: 0}
-    key3: {r: 0.5822246, g: 1, b: 0.9827127, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 18311
-    ctime2: 38165
-    ctime3: 49730
-    ctime4: 65535
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_NumColorKeys: 5
-    m_NumAlphaKeys: 2
+  _colorGradient: {fileID: 11400000, guid: 9487615f00617634fbd1af0660e835ff, type: 2}
+  _min: 0
+  _max: 0
+  _changeSensitity: 100
   _duration: 15
   _curve: {fileID: 11400000, guid: d187184ed4cf55445a19bdadf37e73d0, type: 2}
 --- !u!4 &1695333880
