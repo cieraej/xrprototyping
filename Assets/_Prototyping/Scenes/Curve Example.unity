@@ -317,7 +317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565050213}
   m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -855,8 +855,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toMove: {fileID: 609825229}
   _moveTo: {fileID: 1373716554}
-  _curve: {fileID: 11400000, guid: 144cc9fb7f33ddf4ea96a6da627c1a0e, type: 2}
   _duration: 5
+  _curve: {fileID: 11400000, guid: 144cc9fb7f33ddf4ea96a6da627c1a0e, type: 2}
 --- !u!1 &1695333878
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,12 +888,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _materialToChange: {fileID: 2100000, guid: f41a1510c3551894f9e24c9887baa057, type: 2}
   _propertyToChange: _Color
-  _colorGradient: {fileID: 11400000, guid: 9487615f00617634fbd1af0660e835ff, type: 2}
-  _min: 0
-  _max: 0
-  _changeSensitity: 100
   _duration: 15
-  _curve: {fileID: 11400000, guid: d187184ed4cf55445a19bdadf37e73d0, type: 2}
+  _curve: {fileID: 11400000, guid: 679f5a15b78488d439b21e7a8d7c2b09, type: 2}
+  _colorGradient: {fileID: 11400000, guid: 9487615f00617634fbd1af0660e835ff, type: 2}
 --- !u!4 &1695333880
 Transform:
   m_ObjectHideFlags: 0

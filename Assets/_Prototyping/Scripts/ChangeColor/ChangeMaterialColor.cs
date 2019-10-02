@@ -1,28 +1,69 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 using Curves;
+using System.Collections;
 
-public class ChangeMaterialColor : MonoBehaviour {
+#if UNITY_EDITOR
+using UnityEditor;
+[CustomEditor(typeof(ChangeMaterialColor))]
+public class ChangeMaterialColorEditor : Editor
+{
+
+    /// <summary>
+    /// Buttons to be pressed on the inspector GUI 
+    /// </summary> ]
+    public override void OnInspectorGUI()
+    {
+        var showStopLoopButton = false;
+        DrawDefaultInspector();
+
+        ChangeMaterialColor myScript = (ChangeMaterialColor)target;
+
+        if (GUILayout.Button("Animate Color"))
+        {
+            myScript.AnimateColor();
+        }
+        
+        if (!showStopLoopButton)
+        {
+
+            if (GUILayout.Button("Loop Color"))
+            {
+                myScript.StartLooping();
+                showStopLoopButton = true;
+            }
+        }
+        else
+        {
+            if (GUILayout.Button("Stop Looping"))
+            {
+                myScript.StopLooping();
+                showStopLoopButton = false;
+            }
+        }
+        
+    }
+}
+#endif
+
+public class ChangeMaterialColor : MonoBehaviour
+{
 
     [SerializeField] private Material _materialToChange;
     [SerializeField] private string _propertyToChange = "_Color";
-    [SerializeField] private SharedGradient _colorGradient;
-    [SerializeField] private float _min;
-    [SerializeField] private float _max;
-    [SerializeField] private float _changeSensitity = 100f; 
     [SerializeField] private float _duration = 2f;
-    [SerializeField] private Curve _curve; 
-    private Color _startColor; 
+    [SerializeField] private Curve _curve;
+    [SerializeField] private SharedGradient _colorGradient;
+    private Color _startColor;
 
     /// <summary>
     /// Enable the keywords for the material.
     /// </summary>
-    private void Awake () {
+    private void Awake()
+    {
 
         _materialToChange.EnableKeyword(_propertyToChange);
         _startColor = _materialToChange.GetColor(_propertyToChange);
-
     }
 
     private void OnApplicationQuit()
@@ -34,5 +75,24 @@ public class ChangeMaterialColor : MonoBehaviour {
     public void AnimateColor()
     {
         StartCoroutine(CalculateCurve.AnimateColor(_curve, _materialToChange, _propertyToChange, _colorGradient.sharedGradient, _duration));
+    }
+
+    public void StartLooping()
+    {
+        StartCoroutine(LoopColor());
+    }
+
+    public void StopLooping()
+    {
+        StopCoroutine(LoopColor());
+    }
+
+    private IEnumerator LoopColor()
+    {
+        while (true)
+        {
+            _materialToChange.SetColor(_propertyToChange, _colorGradient.sharedGradient.Evaluate(Mathf.PingPong(Time.time, 1)));
+            yield return null;
+        }
     }
 }

@@ -3,8 +3,8 @@ using Curves;
 
 #if UNITY_EDITOR
 using UnityEditor;
-[CustomEditor(typeof(ChangeTransformPositionWithCurve))]
-public class ChangeTransformPositionWithCurveEditor : Editor
+[CustomEditor(typeof(MatchTransformWithCurves))]
+public class MatchTransformWithCurvesEditor : Editor
 {
 
     /// <summary>
@@ -14,7 +14,7 @@ public class ChangeTransformPositionWithCurveEditor : Editor
     {
         DrawDefaultInspector();
 
-        ChangeTransformPositionWithCurve myScript = (ChangeTransformPositionWithCurve)target;
+        MatchTransformWithCurves myScript = (MatchTransformWithCurves)target;
 
         if (GUILayout.Button("Animate Position"))
         {
@@ -34,24 +34,27 @@ public class ChangeTransformPositionWithCurveEditor : Editor
 }
 #endif
 
-public class ChangeTransformPositionWithCurve : MonoBehaviour
+public class MatchTransformWithCurves : MonoBehaviour
 {
     /// <summary>
     /// Transform to move.
     /// </summary>
     [SerializeField] private Transform _toMove;
+    
     /// <summary>
     /// Transform to move to.
     /// </summary>
     [SerializeField] private Transform _moveTo;
-    /// <summary>
-    /// Animation curve it will follow.
-    /// </summary>
-    [SerializeField] private Curve _curve;
+    
     /// <summary>
     /// Duration of the change.
     /// </summary>
     [SerializeField] private float _duration = 1f;
+    
+    /// <summary>
+    /// Animation curve it will follow.
+    /// </summary>
+    [SerializeField] private Curve _curve;
 
     /// <summary>
     /// Matches position.
