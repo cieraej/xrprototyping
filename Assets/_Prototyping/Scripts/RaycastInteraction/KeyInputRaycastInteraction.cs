@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace RaycastInteraction
+﻿namespace RaycastInteraction
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using UnityEngine;
+
     public class KeyInputRaycastInteraction : RaycastInteraction
     {
         [SerializeField] private KeyCode _key;

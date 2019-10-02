@@ -19,16 +19,16 @@
             DrawDefaultInspector();
 
             RaycastInteraction myScript = (RaycastInteraction)target;
-            EditorGUILayout.LabelField("Debug Buttons", EditorStyles.boldLabel);
-            if (GUILayout.Button("On Raycast Enter"))
+
+            if (GUILayout.Button("On Enter"))
             {
                 myScript.OnRaycastEnter();
             }
-            if (GUILayout.Button("On Raycast Exit"))
+            if (GUILayout.Button("On Exit"))
             {
                 myScript.OnRaycastExit();
             }
-            if (GUILayout.Button("On Raycast Input Down"))
+            if (GUILayout.Button("On Input Down"))
             {
                 myScript.OnRaycastInput(); 
             }
@@ -44,7 +44,6 @@
         /// <summary>
         /// Raycast origin of the gaze interaction.
         /// </summary>
-        [Header("Raycast Variables")]
         [Tooltip("Will default to camera")]
         [SerializeField] private Transform _raycastOrigin;
         /// <summary>
@@ -62,11 +61,11 @@
         /// <summary>
         /// Layer mask for the raycast.
         /// </summary>
+        [Header("Interaction Layer")]
         [SerializeField] private LayerMask _layerMask;
         /// <summary>
         /// On raycast hit enter, invoke this unity event.
         /// </summary>
-        [Header("Unity Events")]
         [SerializeField] private UnityEvent _onRaycastHitEnter;
         /// <summary>
         /// On raycast hit exit invoke this unity event.

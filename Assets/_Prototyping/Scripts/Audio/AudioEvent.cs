@@ -18,6 +18,7 @@ public class AudioEventEditor : Editor
     {
         _previewer = EditorUtility.CreateGameObjectWithHideFlags("Audio preview", HideFlags.HideAndDontSave, typeof(AudioSource)).GetComponent<AudioSource>();
     }
+
     /// <summary>
     /// Destoys the editor audio source. 
     /// </summary>
@@ -25,6 +26,7 @@ public class AudioEventEditor : Editor
     {
         DestroyImmediate(_previewer.gameObject);
     }
+
     /// <summary>
     /// What shows up in the editor. 
     /// </summary>

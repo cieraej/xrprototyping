@@ -1,4 +1,4 @@
-﻿Shader "Normal/Examples/Gradient Skybox" {
+﻿Shader "Custom/Gradient Skybox" {
 	Properties {
 		[Header(Gradient Colors)]
 		_ColorT ("Top Color", Color) = (1,1,1,1)

@@ -1,4 +1,4 @@
-﻿Shader "Normal/Examples/Floor" {
+﻿Shader "Custom/Texture" {
      Properties {
          _MainTex ("Base (RGB)", 2D) = "white" {}
      }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 using Curves;
@@ -8,7 +7,7 @@ public class ChangeMaterialColor : MonoBehaviour {
 
     [SerializeField] private Material _materialToChange;
     [SerializeField] private string _propertyToChange = "_Color";
-    [SerializeField] private Gradient _colorGradient;
+    [SerializeField] private SharedGradient _colorGradient;
     [SerializeField] private float _min;
     [SerializeField] private float _max;
     [SerializeField] private float _changeSensitity = 100f; 
@@ -34,6 +33,6 @@ public class ChangeMaterialColor : MonoBehaviour {
     [ContextMenu("Animate Color")]
     public void AnimateColor()
     {
-        StartCoroutine(CalculateCurve.AnimateColor(_curve, _materialToChange, _propertyToChange, _colorGradient, _duration));
+        StartCoroutine(CalculateCurve.AnimateColor(_curve, _materialToChange, _propertyToChange, _colorGradient.sharedGradient, _duration));
     }
 }
