@@ -41,17 +41,16 @@ public class ChangeMaterialColorEditor : Editor
                 showStopLoopButton = false;
             }
         }
-        
     }
 }
 #endif
 
 public class ChangeMaterialColor : MonoBehaviour
 {
-
     [SerializeField] private Material _materialToChange;
     [SerializeField] private string _propertyToChange = "_Color";
-    [SerializeField] private float _duration = 2f;
+    [SerializeField] private float _animationDuration = 2f;
+    [SerializeField] private float _loopSensitivity = .5f;
     [SerializeField] private Curve _curve;
     [SerializeField] private SharedGradient _colorGradient;
     private Color _startColor;
@@ -74,7 +73,7 @@ public class ChangeMaterialColor : MonoBehaviour
     [ContextMenu("Animate Color")]
     public void AnimateColor()
     {
-        StartCoroutine(CalculateCurve.AnimateColor(_curve, _materialToChange, _propertyToChange, _colorGradient.sharedGradient, _duration));
+        StartCoroutine(CalculateCurve.AnimateColor(_curve, _materialToChange, _propertyToChange, _colorGradient.sharedGradient, _animationDuration));
     }
 
     public void StartLooping()
@@ -91,7 +90,7 @@ public class ChangeMaterialColor : MonoBehaviour
     {
         while (true)
         {
-            _materialToChange.SetColor(_propertyToChange, _colorGradient.sharedGradient.Evaluate(Mathf.PingPong(Time.time, 1)));
+            _materialToChange.SetColor(_propertyToChange, _colorGradient.sharedGradient.Evaluate(Mathf.PingPong(Time.time * _loopSensitivity, 1)));
             yield return null;
         }
     }
