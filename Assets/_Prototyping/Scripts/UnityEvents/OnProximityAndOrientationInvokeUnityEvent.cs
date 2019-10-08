@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
 public class OnProximityAndOrientationInvokeUnityEvent : MonoBehaviour
 {
-
     [SerializeField] private Transform _origin;
     [SerializeField] private Transform _target;
 
@@ -51,6 +48,7 @@ public class OnProximityAndOrientationInvokeUnityEvent : MonoBehaviour
             isInRange = false; 
         }
 
+        // check orientation
         if( currentOrientation < _orientationPercision.maxValue && currentOrientation > _orientationPercision.minValue)
         {
             isOriented = true; 
@@ -60,7 +58,7 @@ public class OnProximityAndOrientationInvokeUnityEvent : MonoBehaviour
             isOriented = false; 
         }
 
-        // check orientation
+        // invoke events for orientation
         if(isOriented && !previousIsOriented)
         {
             _onOrientedTowards.Invoke();
@@ -88,13 +86,10 @@ public class OnProximityAndOrientationInvokeUnityEvent : MonoBehaviour
         else if ((!isOriented | !isInRange) && (previousIsInRange & previousIsOriented))
         {
             _onProximityExitAndOrientedAway.Invoke();
-
         }
 
         // storing previous values
         previousIsInRange = isInRange;
         previousIsOriented = isOriented;
     }
-
-
 }

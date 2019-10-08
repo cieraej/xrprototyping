@@ -1,7 +1,5 @@
 ﻿namespace RaycastInteraction
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     using UnityEngine.Events;
 
@@ -110,6 +108,7 @@
         public void Update()
         {
             Debug.DrawRay(_raycastOrigin.position, _raycastOrigin.forward * _maxDistance, Color.green);
+
             if (Physics.Raycast(_raycastOrigin.position, _raycastOrigin.forward, out hit, _maxDistance, ~_layerMask.value))
             {
                 OnRaycastHit(hit.transform);
@@ -119,7 +118,6 @@
             {
                 OnRaycastExit();
             }
-
         }
         #endregion
         #region Private Functions
@@ -162,6 +160,7 @@
         }
         #endregion
         #region Public functions
+
         /// <summary>
         /// Invoked when raycast enters interactive object.
         /// </summary>
@@ -171,6 +170,7 @@
             _onRaycastHitEnter.Invoke();
             _hasBeenGazedAt = true;
         }
+
         /// <summary>
         /// Invoked when raycast leaves the interactive object.
         /// </summary>
@@ -181,6 +181,7 @@
             _onRaycastHitExit.Invoke();
 
         }
+
         /// <summary>
         /// Invoked when raycast also has the corresponding input. Checks the delay.
         /// </summary>
@@ -193,6 +194,7 @@
                 _onRaycastHitInput.Invoke();
             }
         }
+
         /// <summary>
         /// Called from outside function to indicate whether or not the input needed is down.
         /// </summary>
@@ -200,6 +202,7 @@
         {
             _isInputDown = true;
         }
+
         /// <summary>
         /// Called when the desired input stops.
         /// </summary>
@@ -207,6 +210,7 @@
         {
             _isInputDown = false;
         }
+
         /// <summary>
         /// Switch Raycast Origin
         /// </summary>
