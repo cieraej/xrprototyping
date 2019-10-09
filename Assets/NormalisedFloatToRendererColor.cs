@@ -7,6 +7,7 @@ public class NormalisedFloatToRendererColor : MonoBehaviour
     [SerializeField] private string _colorProperty = "_Color";
     [SerializeField] private Gradient _gradient;
     [SerializeField] private SharedNormalisedFloat _sharedNormalisedFloat;
+    [SerializeField] private float _sensitivity = .5f; 
 
     private float currentNormalisedFloat;
     private float previousNormalisedFloat;
@@ -19,10 +20,9 @@ public class NormalisedFloatToRendererColor : MonoBehaviour
     void Update()
     {
         currentNormalisedFloat = _sharedNormalisedFloat.NormaliseClamped();
-        if (currentNormalisedFloat != previousNormalisedFloat)
-        {
-            _renderer.materials[_materialIndex].SetColor(_colorProperty, _gradient.Evaluate(currentNormalisedFloat));
-        }
+     
+            _renderer.materials[_materialIndex].SetColor(_colorProperty, Color.Lerp (_renderer.materials[_materialIndex].GetColor(_colorProperty),_gradient.Evaluate(currentNormalisedFloat), Time.deltaTime*_sensitivity));
+        
         previousNormalisedFloat = currentNormalisedFloat;
     }
 }
